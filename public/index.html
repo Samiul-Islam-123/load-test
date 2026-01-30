@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Load Balancer Test</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --accent: #38bdf8;
+      --muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #020617, #020617cc);
+      padding: 2.5rem;
+      border-radius: 16px;
+      width: min(420px, 90%);
+      box-shadow: 0 20px 40px rgba(0,0,0,.6);
+      border: 1px solid #1e293b;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0.25rem 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.15);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🚀 Load Balancer Active</h1>
+
+    <p>This request was served by:</p>
+    <div class="badge">
+      <!-- Replace hostname dynamically if using Node -->
+      HOSTNAME_PLACEHOLDER
+    </div>
+
+    <p style="margin-top:1.2rem;">
+      This is a minimal static service running inside a lightweight VM,
+      behind an NGINX load balancer.
+    </p>
+
+    <div class="footer">
+      Alpine Linux · QEMU · NGINX · Node.js
+    </div>
+  </div>
+
+</body>
+</html>
