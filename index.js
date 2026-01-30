@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-const PORT = process.env.PORT || 5500 ;
+const PORT = process.env.PORT || 3000 ;
 
 app.get('/health', (req,res) => {
     res.send("Express server is running properly")
