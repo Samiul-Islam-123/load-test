@@ -26,6 +26,20 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+/* CPU-heavy route */
+app.get('/compute', (req, res) => {
+  // Heavy computation: nth Fibonacci number
+  function fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+  }
+
+  const n = 35; // Adjust for more/less CPU load
+  const result = fib(n);
+
+  res.send(`[${timestamp()}] [${hostname}] Computed fib(${n}) = ${result}`);
+});
+
 app.listen(PORT, () => {
   console.log(`[${timestamp()}] [${hostname}] Server running on port ${PORT}`);
 });
