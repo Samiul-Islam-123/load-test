@@ -30,11 +30,11 @@ app.get('/', (req, res) => {
 app.get('/compute', (req, res) => {
   // Heavy computation: nth Fibonacci number
   function fib(n) {
-    if (n <= 1) return n;
+    if (n <= 1) return n
     return fib(n - 1) + fib(n - 2);
   }
 
-  const n = 85; // Adjust for more/less CPU load
+  const n = 37; // Adjust for more/less CPU load
   const result = fib(n);
 
   res.send(`[${timestamp()}] [${hostname}] Computed fib(${n}) = ${result}`);
