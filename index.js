@@ -34,7 +34,7 @@ app.get('/compute', (req, res) => {
     return fib(n - 1) + fib(n - 2);
   }
 
-  const n = 35; // Adjust for more/less CPU load
+  const n = 85; // Adjust for more/less CPU load
   const result = fib(n);
 
   res.send(`[${timestamp()}] [${hostname}] Computed fib(${n}) = ${result}`);
