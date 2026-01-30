@@ -1,17 +1,31 @@
 const express = require('express');
 const path = require('path');
+const os = require('os');
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-const PORT = process.env.PORT || 3000 ;
+const hostname = os.hostname();
 
-app.get('/health', (req,res) => {
-    res.send("Express server is running properly")
-})
+/* Pretty timestamp: YYYY-MM-DD HH:mm:ss */
+function timestamp() {
+  return new Date().toISOString().replace('T', ' ').split('.')[0];
+}
 
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
+/* Global request logger (runs for ALL routes) */
+app.use((req, res, next) => {
+  console.log(`[${timestamp()}] [${hostname}] ${req.method} ${req.url}`);
+  next();
+});
 
-app.listen(PORT,() => {
-    console.log(`Server is up and running on PORT : ${PORT}`);
-})
+app.get('/health', (req, res) => {
+  res.send(`OK from ${hostname}`);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`[${timestamp()}] [${hostname}] Server running on port ${PORT}`);
+});
